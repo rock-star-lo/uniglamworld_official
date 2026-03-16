@@ -4,843 +4,686 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Uniglam Emporium – Accessorize Your Dreams</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  :root {
-    --lavender: #c9b8e8;
-    --lavender-light: #e8dff7;
-    --lavender-deep: #9f85d0;
-    --pink: #f4b8ce;
-    --pink-light: #fde8f0;
-    --pink-deep: #e07aa0;
-    --gold: #d4af6a;
-    --gold-light: #f5e6c8;
-    --gold-shine: #f0d080;
-    --white: #fffafd;
-    --soft-bg: #fdf6ff;
-    --text-dark: #3a2d4a;
-    --text-mid: #6b5880;
-    --text-soft: #9980b3;
-  }
+:root{
+  --lav:#c9b5e8;--lav-light:#ede5f9;--lav-deep:#9c7cd4;
+  --pink:#f2b8cc;--pink-light:#fdedf3;--pink-deep:#d4698f;
+  --cream:#fdf6ee;--gold:#c9963a;--gold-light:#f5e6c4;--gold-shine:#e8c96a;--gold-pale:#faf0d7;
+  --white:#fffcff;--text:#2e1f3e;--text-mid:#6a4f82;--text-soft:#a08ab8;
+  --border:rgba(201,150,58,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--lav-light);}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--lav-deep),var(--pink-deep));border-radius:10px;}
+#pg{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--lav-deep),var(--pink-deep),var(--gold-shine));z-index:9999;transition:width .1s;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* NAV */
+header{position:fixed;top:0;width:100%;z-index:1000;padding:0 5%;background:rgba(255,252,255,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+header.scrolled{box-shadow:0 4px 40px rgba(156,124,212,.12);}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px;}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;letter-spacing:.03em;background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;}
+.logo em{font-style:italic;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid);transition:color .25s;}
+.nav-links a:hover{color:var(--pink-deep);}
+.nav-cta{padding:9px 24px!important;border-radius:50px!important;background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep))!important;color:#fff!important;box-shadow:0 4px 18px rgba(156,124,212,.35)!important;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(156,124,212,.45)!important;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.burger span{width:22px;height:2px;background:var(--text-mid);border-radius:2px;transition:.3s;}
+.mobnav{display:none;flex-direction:column;padding:1rem 5% 1.2rem;gap:.6rem;background:rgba(255,252,255,.98);border-bottom:1px solid var(--border);}
+.mobnav a{text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-mid);padding:.4rem 0;border-bottom:1px solid rgba(201,150,58,.1);}
+.mobnav.open{display:flex;}
 
-  html { scroll-behavior: smooth; }
+/* SECTIONS */
+.section{padding:6rem 5%;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.s-label{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:.4rem;}
+.s-heading{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:.7rem;}
+.s-heading em{font-style:italic;color:var(--lav-deep);}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,var(--lav-deep),var(--pink-deep),var(--gold-shine));border-radius:3px;margin:1rem 0 1.8rem;}
+.divider.cx{margin-left:auto;margin-right:auto;}
+.subtext{color:var(--text-soft);font-size:.92rem;line-height:1.85;}
 
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--soft-bg);
-    color: var(--text-dark);
-    overflow-x: hidden;
-  }
+/* REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.rv.up{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
 
-  /* ── SPARKLE CANVAS ── */
-  #sparkle-canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(150deg,#f3ecff 0%,#fde9f2 38%,#fff8ec 70%,#fffcff 100%);}
+.h-blobs{position:absolute;inset:0;pointer-events:none;}
+.hblob{position:absolute;border-radius:50%;filter:blur(72px);opacity:.5;animation:bf 9s ease-in-out infinite;}
+.hb1{width:580px;height:580px;background:radial-gradient(circle,#d5bff5,transparent);top:-180px;left:-130px;}
+.hb2{width:430px;height:430px;background:radial-gradient(circle,#f9c5de,transparent);bottom:-90px;right:-70px;animation-delay:-3.5s;}
+.hb3{width:280px;height:280px;background:radial-gradient(circle,#f8e8b0,transparent);top:40%;right:22%;animation-delay:-6s;}
+@keyframes bf{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(16px,-20px) scale(1.04);}66%{transform:translate(-12px,14px) scale(.97);}}
+.h-floats{position:absolute;inset:0;pointer-events:none;}
+.hf{position:absolute;opacity:.55;animation:hfl 7s ease-in-out infinite;}
+.hf:nth-child(1){font-size:2rem;top:13%;left:6%;animation-delay:0s;}
+.hf:nth-child(2){font-size:1.8rem;top:18%;right:7%;animation-delay:-1.8s;}
+.hf:nth-child(3){font-size:2.2rem;bottom:20%;left:10%;animation-delay:-3.5s;}
+.hf:nth-child(4){font-size:1.6rem;bottom:15%;right:6%;animation-delay:-5s;}
+.hf:nth-child(5){font-size:1.4rem;top:52%;left:3%;animation-delay:-2.5s;}
+.hf:nth-child(6){font-size:2rem;top:47%;right:4%;animation-delay:-4s;}
+.hf:nth-child(7){font-size:1.5rem;top:28%;left:20%;animation-delay:-1s;}
+.hf:nth-child(8){font-size:1.8rem;bottom:32%;right:18%;animation-delay:-3s;}
+@keyframes hfl{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-18px) rotate(9deg);}}
+.hero-wrap{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:80px 5% 2rem;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;}
+.hero-left{}
+.h-badge{display:inline-flex;align-items:center;gap:.4rem;padding:6px 18px;border-radius:50px;background:rgba(255,255,255,.65);border:1px solid var(--border);backdrop-filter:blur(10px);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:1.3rem;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5.2vw,4rem);font-weight:900;line-height:1.08;margin-bottom:1rem;}
+.hero-title .t1{color:var(--text);}
+.hero-title .t2{background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;}
+.hero-title .t3{color:var(--text);}
+.hero-tag{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:var(--text-mid);margin-bottom:2rem;letter-spacing:.03em;}
+.hero-tag b{color:var(--gold);font-style:normal;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:13px 34px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:transform .3s,box-shadow .3s;cursor:pointer;border:none;}
+.btn-p{background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));color:#fff;box-shadow:0 8px 28px rgba(156,124,212,.4);}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(156,124,212,.55);}
+.btn-o{background:transparent;color:var(--text-mid);border:1.5px solid rgba(156,124,212,.35);}
+.btn-o:hover{transform:translateY(-2px);background:var(--lav-light);border-color:var(--lav-deep);}
+.hero-right{display:flex;justify-content:center;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;width:100%;max-width:420px;}
+.hcard{border-radius:22px;overflow:hidden;position:relative;box-shadow:0 10px 36px rgba(156,124,212,.15);}
+.hcard img{width:100%;object-fit:cover;transition:transform .5s ease;display:block;}
+.hcard:hover img{transform:scale(1.08);}
+.hcard.tall{grid-row:span 2;}
+.hcard .hcap{position:absolute;bottom:0;left:0;right:0;padding:.7rem .9rem;background:linear-gradient(transparent,rgba(46,31,62,.62));color:#fff;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    padding: 18px 5%;
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(255,250,253,0.82);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(212,175,106,0.25);
-    box-shadow: 0 2px 30px rgba(159,133,208,0.08);
-  }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.45rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    background: linear-gradient(135deg, var(--lavender-deep), var(--pink-deep), var(--gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-mid);
-    transition: color 0.3s;
-  }
-  .nav-links a:hover { color: var(--pink-deep); }
-  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-  .nav-hamburger span { width: 24px; height: 2px; background: var(--text-mid); border-radius: 2px; transition: all 0.3s; }
+/* ABOUT */
+#about{background:var(--white);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.av-wrap{position:relative;display:flex;justify-content:center;align-items:center;min-height:400px;}
+.av-circle{position:absolute;width:380px;height:380px;border-radius:50%;background:linear-gradient(135deg,var(--lav-light),var(--pink-light));opacity:.45;}
+.av-main{width:290px;height:360px;border-radius:30px;overflow:hidden;box-shadow:0 22px 65px rgba(156,124,212,.22);position:relative;z-index:2;}
+.av-main img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.av-main:hover img{transform:scale(1.05);}
+.av-fl{position:absolute;width:145px;height:145px;border-radius:18px;overflow:hidden;box-shadow:0 12px 36px rgba(212,105,143,.25);z-index:3;border:4px solid #fff;}
+.av-fl.f1{bottom:-18px;right:-14px;}
+.av-fl.f2{top:-18px;left:-14px;}
+.av-fl img{width:100%;height:100%;object-fit:cover;}
+.at-stats{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap;}
+.stat .sn{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat .sl{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);margin-top:.2rem;}
 
-  /* ── HERO ── */
-  #hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    background: linear-gradient(160deg, #f3ecff 0%, #fde8f5 40%, #fff5e0 100%);
-  }
-  .hero-bg-shapes { position: absolute; inset: 0; z-index: 1; }
-  .hero-blob {
-    position: absolute; border-radius: 50%;
-    filter: blur(60px); opacity: 0.55;
-    animation: floatBlob 8s ease-in-out infinite;
-  }
-  .hero-blob-1 { width: 520px; height: 520px; background: radial-gradient(circle, #d5bcf0, transparent); top: -120px; left: -80px; animation-delay: 0s; }
-  .hero-blob-2 { width: 400px; height: 400px; background: radial-gradient(circle, #f9c8df, transparent); bottom: -60px; right: -60px; animation-delay: -3s; }
-  .hero-blob-3 { width: 280px; height: 280px; background: radial-gradient(circle, #f5e6a8, transparent); top: 30%; right: 15%; animation-delay: -5s; }
-  @keyframes floatBlob {
-    0%, 100% { transform: translate(0,0) scale(1); }
-    33% { transform: translate(20px,-20px) scale(1.04); }
-    66% { transform: translate(-15px,15px) scale(0.97); }
-  }
+/* COLLECTION */
+#collection{background:linear-gradient(160deg,#faf5ff 0%,#fdeef5 50%,#fffaef 100%);}
+.ch{text-align:center;margin-bottom:3rem;}
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;}
+.pc{background:#fff;border-radius:24px;overflow:hidden;border:1px solid rgba(201,150,58,.12);box-shadow:0 5px 24px rgba(156,124,212,.08);transition:transform .35s,box-shadow .35s;position:relative;}
+.pc:hover{transform:translateY(-10px);box-shadow:0 22px 52px rgba(156,124,212,.22);}
+.pi{position:relative;overflow:hidden;aspect-ratio:3/3.5;}
+.pi img{width:100%;height:100%;object-fit:cover;transition:transform .55s;}
+.pc:hover .pi img{transform:scale(1.1);}
+.pbadge{position:absolute;top:10px;left:10px;padding:4px 12px;border-radius:50px;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;z-index:2;}
+.bnew{background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));color:#fff;}
+.bhot{background:linear-gradient(135deg,var(--gold),#e07040);color:#fff;}
+.bfav{background:linear-gradient(135deg,var(--pink-deep),var(--lav-deep));color:#fff;}
+.pov{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(46,31,62,.5));opacity:0;transition:opacity .35s;display:flex;align-items:flex-end;justify-content:center;padding-bottom:1rem;}
+.pc:hover .pov{opacity:1;}
+.pq{padding:8px 20px;border-radius:50px;background:rgba(255,255,255,.92);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:none;cursor:pointer;backdrop-filter:blur(10px);}
+.pinfo{padding:1.1rem 1.2rem 1.4rem;}
+.pinfo h3{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;color:var(--text);margin-bottom:.22rem;}
+.pinfo p{font-size:.76rem;color:var(--text-soft);margin-bottom:.65rem;}
+.pfoot{display:flex;align-items:center;justify-content:space-between;}
+.pprice{font-size:.88rem;font-weight:700;color:var(--gold);}
+.pheart{background:none;border:none;cursor:pointer;color:var(--text-soft);font-size:.88rem;transition:color .2s,transform .2s;}
+.pheart:hover,.pheart.active{color:var(--pink-deep);transform:scale(1.3);}
 
-  .hero-content {
-    position: relative; z-index: 2;
-    text-align: center;
-    padding: 2rem;
-    animation: fadeUp 1s ease 0.2s both;
-  }
-  .hero-badge {
-    display: inline-block;
-    padding: 6px 22px;
-    border-radius: 50px;
-    background: linear-gradient(90deg, rgba(212,175,106,0.18), rgba(244,184,206,0.22));
-    border: 1px solid rgba(212,175,106,0.4);
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 1.2rem;
-  }
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 7vw, 5.2rem);
-    font-weight: 700;
-    line-height: 1.1;
-    background: linear-gradient(135deg, var(--text-dark) 0%, var(--lavender-deep) 50%, var(--pink-deep) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 1rem;
-  }
-  .hero-tagline {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-    color: var(--text-mid);
-    margin-bottom: 2.2rem;
-    letter-spacing: 0.04em;
-  }
-  .hero-tagline span { color: var(--gold); }
-  .btn-primary {
-    display: inline-block;
-    padding: 16px 44px;
-    border-radius: 50px;
-    background: linear-gradient(135deg, var(--lavender-deep), var(--pink-deep));
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    box-shadow: 0 8px 32px rgba(159,133,208,0.45);
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-primary::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-    border-radius: 50px;
-  }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(159,133,208,0.55); }
+/* MORE */
+#more{background:var(--white);}
+.mh{text-align:center;margin-bottom:3rem;}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.mi{border-radius:20px;overflow:hidden;position:relative;cursor:pointer;}
+.mi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s;}
+.mi:hover img{transform:scale(1.09);}
+.mi.wide{grid-column:span 2;}
+.mi:nth-child(1){height:255px;}
+.mi:nth-child(2){height:255px;}
+.mi:nth-child(3){height:255px;}
+.mi:nth-child(4){height:235px;}
+.mi:nth-child(5){height:235px;}
+.mcap{position:absolute;bottom:0;left:0;right:0;padding:1rem 1.2rem;background:linear-gradient(transparent,rgba(46,31,62,.62));color:#fff;transform:translateY(8px);opacity:0;transition:.35s;}
+.mi:hover .mcap{transform:translateY(0);opacity:1;}
+.mcap h4{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;}
+.mcap span{font-size:.7rem;opacity:.82;letter-spacing:.08em;text-transform:uppercase;}
 
-  .hero-floats {
-    position: absolute; inset: 0; z-index: 2;
-    pointer-events: none;
-  }
-  .float-icon {
-    position: absolute;
-    font-size: 2.2rem;
-    opacity: 0.6;
-    animation: floatIcon 6s ease-in-out infinite;
-  }
-  .f1 { top: 15%; left: 8%; animation-delay: 0s; }
-  .f2 { top: 22%; right: 9%; animation-delay: -1.5s; }
-  .f3 { bottom: 22%; left: 12%; animation-delay: -3s; }
-  .f4 { bottom: 18%; right: 8%; animation-delay: -4.5s; }
-  .f5 { top: 50%; left: 4%; animation-delay: -2s; }
-  .f6 { top: 45%; right: 5%; animation-delay: -3.5s; }
-  @keyframes floatIcon {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-18px) rotate(8deg); }
-  }
+/* INSTAGRAM */
+#insta{background:linear-gradient(150deg,#f5efff,#fdeef5,#fff8ec);}
+.ih{text-align:center;margin-bottom:2.5rem;}
+.insta-badge{display:inline-flex;align-items:center;gap:.4rem;padding:7px 20px;border-radius:50px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;font-size:.76rem;font-weight:600;text-decoration:none;margin-bottom:1.4rem;box-shadow:0 6px 22px rgba(131,58,180,.3);transition:transform .3s;}
+.insta-badge:hover{transform:translateY(-2px);}
+.ibox{background:#fff;border-radius:24px;border:1px solid var(--border);box-shadow:0 8px 38px rgba(156,124,212,.1);padding:2.5rem;max-width:700px;margin:0 auto;text-align:center;}
+.iavatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1rem;box-shadow:0 6px 18px rgba(131,58,180,.3);}
+.iavatar i{color:#fff;}
+.ibox h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:.25rem;}
+.ibox .isub{font-size:.8rem;color:var(--text-soft);margin-bottom:1.5rem;}
+.imock{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;max-width:320px;margin:0 auto 1.5rem;}
+.imtile{aspect-ratio:1;border-radius:10px;background:linear-gradient(135deg,var(--lav-light),var(--pink-light));display:flex;align-items:center;justify-content:center;font-size:1.7rem;border:1px solid rgba(201,150,58,.1);transition:transform .3s;}
+.imtile:hover{transform:scale(1.07);}
+.ibox .itext{font-size:.86rem;color:var(--text-mid);line-height:1.75;max-width:420px;margin:0 auto 1.5rem;}
+.ibtn{display:inline-flex;align-items:center;gap:.5rem;padding:12px 30px;border-radius:50px;background:linear-gradient(135deg,#833ab4,#c13584,#fd1d1d);color:#fff;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-decoration:none;box-shadow:0 8px 26px rgba(131,58,180,.35);transition:transform .3s,box-shadow .3s;}
+.ibtn:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(131,58,180,.5);}
 
-  /* ── SECTION BASE ── */
-  section { position: relative; z-index: 1; }
-  .section-inner { max-width: 1180px; margin: 0 auto; padding: 5rem 5%; }
+/* WHY */
+#why{background:var(--white);}
+.wh{text-align:center;margin-bottom:3rem;}
+.wgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;}
+.wcard{background:#fff;border-radius:24px;padding:2rem 1.6rem;text-align:center;border:1px solid rgba(201,150,58,.14);box-shadow:0 5px 22px rgba(156,124,212,.08);transition:transform .35s,box-shadow .35s;position:relative;overflow:hidden;}
+.wcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lav-deep),var(--pink-deep),var(--gold-shine));}
+.wcard:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(156,124,212,.2);}
+.wicon{width:62px;height:62px;border-radius:50%;margin:0 auto 1.1rem;display:flex;align-items:center;justify-content:center;font-size:1.55rem;}
+.wi1{background:linear-gradient(135deg,var(--lav-light),var(--pink-light));}
+.wi2{background:linear-gradient(135deg,var(--gold-pale),var(--lav-light));}
+.wi3{background:linear-gradient(135deg,var(--pink-light),var(--gold-pale));}
+.wi4{background:linear-gradient(135deg,var(--lav-light),var(--gold-pale));}
+.wcard h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.45rem;}
+.wcard p{font-size:.78rem;color:var(--text-soft);line-height:1.65;}
 
-  .section-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 0.6rem;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    color: var(--text-dark);
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-  .section-title em { font-style: italic; color: var(--lavender-deep); }
-  .divider {
-    width: 70px; height: 3px;
-    background: linear-gradient(90deg, var(--lavender-deep), var(--pink-deep), var(--gold));
-    border-radius: 3px;
-    margin: 1.2rem 0 1.8rem;
-  }
+/* CONTACT */
+#contact{background:linear-gradient(150deg,#f5efff 0%,#fdeef5 60%,#fffaef 100%);}
+.ctgrid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;}
+.ct-channels{display:flex;flex-direction:column;gap:.9rem;margin:1.8rem 0;}
+.cch{display:flex;align-items:center;gap:.9rem;padding:1rem 1.3rem;border-radius:16px;text-decoration:none;background:#fff;border:1px solid var(--border);box-shadow:0 4px 16px rgba(156,124,212,.08);transition:transform .3s,box-shadow .3s;color:var(--text);}
+.cch:hover{transform:translateX(5px);box-shadow:0 8px 28px rgba(156,124,212,.18);}
+.cch-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;}
+.ci-ig{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);}
+.ci-wa{background:linear-gradient(135deg,#25d366,#128c7e);}
+.ci-em{background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));}
+.cch-icon i{color:#fff;}
+.cch strong{display:block;font-size:.85rem;font-weight:600;color:var(--text);}
+.cch span{font-size:.76rem;color:var(--text-soft);}
+.cform{background:#fff;border-radius:26px;padding:2.3rem;border:1px solid var(--border);box-shadow:0 8px 38px rgba(156,124,212,.1);}
+.cform h3{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--text);margin-bottom:.2rem;}
+.cform .fsub{font-size:.8rem;color:var(--text-soft);margin-bottom:1.6rem;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-mid);margin-bottom:.45rem;}
+.fg input,.fg textarea{width:100%;padding:11px 15px;border-radius:12px;border:1.5px solid rgba(156,124,212,.2);background:#faf8ff;font-family:'Poppins',sans-serif;font-size:.83rem;color:var(--text);outline:none;transition:border-color .25s,box-shadow .25s;}
+.fg input:focus,.fg textarea:focus{border-color:var(--lav-deep);box-shadow:0 0 0 3px rgba(156,124,212,.12);}
+.fg textarea{resize:vertical;min-height:105px;}
+.fsend{width:100%;padding:13px;border-radius:50px;background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));color:#fff;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 8px 26px rgba(156,124,212,.35);transition:transform .3s,box-shadow .3s;}
+.fsend:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(156,124,212,.5);}
+#fsuccess{display:none;text-align:center;padding:1.3rem;color:var(--lav-deep);font-weight:600;}
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+/* FOOTER */
+footer{background:linear-gradient(135deg,#1c1228,#2a1840,#1e1830);color:rgba(255,255,255,.7);padding:4rem 5% 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.ftop{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.fbrand .logo{font-size:1.55rem;display:block;margin-bottom:.7rem;}
+.fbrand p{font-size:.8rem;line-height:1.82;opacity:.68;max-width:210px;margin-bottom:1.1rem;}
+.fsoc-row{display:flex;gap:.65rem;}
+.fsoc{width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;text-decoration:none;opacity:.8;transition:transform .25s,opacity .25s;}
+.fsoc:hover{transform:translateY(-3px);opacity:1;}
+.fi{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);}
+.fw{background:linear-gradient(135deg,#25d366,#128c7e);}
+.fe{background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));}
+.fsoc i{color:#fff;}
+.fcol h4{font-family:'Playfair Display',serif;font-size:.93rem;font-weight:700;color:rgba(255,255,255,.94);margin-bottom:.9rem;letter-spacing:.03em;}
+.fcol ul{list-style:none;}
+.fcol ul li{margin-bottom:.55rem;}
+.fcol ul li a{text-decoration:none;font-size:.78rem;color:rgba(255,255,255,.58);transition:color .25s;}
+.fcol ul li a:hover{color:var(--gold-shine);}
+.fbot{border-top:1px solid rgba(255,255,255,.08);padding-top:1.6rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;}
+.fbot p{font-size:.73rem;opacity:.52;}
+.fbot span{color:var(--gold-shine);}
 
-  /* ── ABOUT ── */
-  #about { background: var(--white); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .about-visual {
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .about-circle {
-    width: 320px; height: 320px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--lavender-light), var(--pink-light));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 7rem;
-    box-shadow: 0 20px 60px rgba(159,133,208,0.2), inset 0 0 50px rgba(255,255,255,0.6);
-    animation: pulse 4s ease-in-out infinite;
-    position: relative;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(159,133,208,0.2); }
-    50% { transform: scale(1.03); box-shadow: 0 25px 80px rgba(159,133,208,0.32); }
-  }
-  .about-orbit {
-    position: absolute;
-    border: 1.5px dashed rgba(212,175,106,0.4);
-    border-radius: 50%;
-    animation: spin 20s linear infinite;
-  }
-  .about-orbit-1 { width: 380px; height: 380px; }
-  .about-orbit-2 { width: 440px; height: 440px; animation-direction: reverse; animation-duration: 28s; }
-  .orbit-dot {
-    position: absolute;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold), var(--pink-deep));
-    top: -6px; left: 50%; transform: translateX(-50%);
-    box-shadow: 0 0 10px rgba(212,175,106,0.6);
-  }
-  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-  .about-text p {
-    color: var(--text-mid);
-    font-size: 1rem;
-    line-height: 1.85;
-    margin-bottom: 1.2rem;
-  }
-  .about-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
-  .about-tag {
-    padding: 7px 18px;
-    border-radius: 50px;
-    background: linear-gradient(90deg, var(--lavender-light), var(--pink-light));
-    border: 1px solid rgba(159,133,208,0.2);
-    font-size: 0.78rem;
-    color: var(--lavender-deep);
-    font-weight: 500;
-    letter-spacing: 0.04em;
-  }
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;padding:.9rem 1.4rem;border-radius:14px;background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));color:#fff;font-size:.83rem;font-weight:600;box-shadow:0 12px 38px rgba(156,124,212,.4);z-index:9998;transform:translateY(100px);opacity:0;transition:all .4s cubic-bezier(.34,1.56,.64,1);}
+.toast.show{transform:translateY(0);opacity:1;}
 
-  /* ── SPECIALS ── */
-  #specials {
-    background: linear-gradient(160deg, #f5efff 0%, #fff0f7 60%, #fffbef 100%);
-  }
-  .specials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.8rem; }
-  .special-card {
-    background: rgba(255,255,255,0.75);
-    border-radius: 24px;
-    padding: 2.2rem 1.8rem;
-    text-align: center;
-    border: 1px solid rgba(212,175,106,0.18);
-    box-shadow: 0 6px 30px rgba(159,133,208,0.1);
-    backdrop-filter: blur(10px);
-    transition: transform 0.35s, box-shadow 0.35s;
-    position: relative;
-    overflow: hidden;
-  }
-  .special-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--lavender-deep), var(--pink-deep), var(--gold));
-  }
-  .special-card:hover { transform: translateY(-8px); box-shadow: 0 18px 50px rgba(159,133,208,0.22); }
-  .special-icon { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
-  .special-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 0.5rem;
-  }
-  .special-card p { font-size: 0.83rem; color: var(--text-soft); line-height: 1.65; }
-
-  /* ── EVENT ── */
-  #event { background: var(--white); }
-  .event-banner {
-    background: linear-gradient(135deg, var(--lavender-deep) 0%, var(--pink-deep) 60%, var(--gold) 100%);
-    border-radius: 32px;
-    padding: 4rem 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 2rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 20px 70px rgba(159,133,208,0.35);
-  }
-  .event-banner::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E") repeat;
-  }
-  .event-item { text-align: center; color: #fff; position: relative; z-index: 1; }
-  .event-item-icon { font-size: 2.5rem; margin-bottom: 0.5rem; display: block; }
-  .event-item-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    opacity: 0.8;
-    margin-bottom: 0.3rem;
-  }
-  .event-item-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-  .event-separator { width: 1px; height: 80px; background: rgba(255,255,255,0.25); }
-
-  /* ── PRODUCTS ── */
-  #products {
-    background: linear-gradient(160deg, #fffbef 0%, #fde8f5 50%, #f3ecff 100%);
-  }
-  .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 2rem; }
-  .product-card {
-    background: rgba(255,255,255,0.88);
-    border-radius: 28px;
-    overflow: hidden;
-    border: 1px solid rgba(212,175,106,0.2);
-    box-shadow: 0 6px 28px rgba(159,133,208,0.1);
-    transition: transform 0.35s, box-shadow 0.35s;
-    backdrop-filter: blur(8px);
-  }
-  .product-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 22px 55px rgba(159,133,208,0.25); }
-  .product-image {
-    width: 100%; height: 180px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .product-image::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(255,255,255,0.15));
-  }
-  .pi-1 { background: linear-gradient(135deg, #e8d5f7, #f9c8df); }
-  .pi-2 { background: linear-gradient(135deg, #f9c8df, #f5e6a8); }
-  .pi-3 { background: linear-gradient(135deg, #c8e6f9, #d5bcf0); }
-  .pi-4 { background: linear-gradient(135deg, #f5e6a8, #f9c8df); }
-  .product-info { padding: 1.4rem 1.6rem 1.8rem; }
-  .product-info h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 0.4rem;
-  }
-  .product-info p { font-size: 0.82rem; color: var(--text-soft); line-height: 1.6; margin-bottom: 1rem; }
-  .product-badge {
-    display: inline-block;
-    padding: 5px 14px;
-    border-radius: 50px;
-    background: linear-gradient(90deg, var(--gold-light), rgba(244,184,206,0.3));
-    border: 1px solid rgba(212,175,106,0.35);
-    font-size: 0.72rem;
-    color: var(--gold);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-  }
-
-  /* ── VISIT CTA ── */
-  #visit {
-    background: linear-gradient(135deg, #2a1d3a 0%, #3d2555 50%, #4a1e35 100%);
-    position: relative;
-    overflow: hidden;
-  }
-  #visit::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(201,184,232,0.12) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 50%, rgba(244,184,206,0.1) 0%, transparent 60%);
-  }
-  .visit-inner {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 6rem 5%;
-    text-align: center;
-    position: relative; z-index: 1;
-  }
-  .visit-inner .section-label { color: var(--gold-shine); }
-  .visit-inner .section-title { color: #fff; }
-  .visit-inner .divider { margin: 1.2rem auto 2rem; }
-  .visit-inner p {
-    color: rgba(255,255,255,0.7);
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-  }
-  .visit-inner p span { color: var(--gold-shine); font-weight: 600; }
-
-  /* ── CONTACT ── */
-  #contact { background: var(--white); }
-  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.8rem; }
-  .contact-card {
-    border-radius: 24px;
-    padding: 2.2rem 2rem;
-    text-align: center;
-    border: 1px solid rgba(212,175,106,0.2);
-    box-shadow: 0 5px 25px rgba(159,133,208,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-decoration: none;
-    display: block;
-    position: relative;
-    overflow: hidden;
-  }
-  .contact-card::before {
-    content: '';
-    position: absolute; inset: 0;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .contact-card:hover { transform: translateY(-7px); box-shadow: 0 18px 45px rgba(159,133,208,0.22); }
-  .contact-card:hover::before { opacity: 1; }
-  .cc-insta { background: linear-gradient(135deg, #fde8f0, #f3ecff); }
-  .cc-insta::before { background: linear-gradient(135deg, rgba(244,184,206,0.3), rgba(201,184,232,0.3)); }
-  .cc-whatsapp { background: linear-gradient(135deg, #e8f7ec, #f3ecff); }
-  .cc-whatsapp::before { background: linear-gradient(135deg, rgba(134,200,152,0.2), rgba(201,184,232,0.2)); }
-  .cc-email { background: linear-gradient(135deg, #fff5e0, #fde8f0); }
-  .cc-email::before { background: linear-gradient(135deg, rgba(245,230,168,0.3), rgba(244,184,206,0.3)); }
-  .contact-icon { font-size: 2.5rem; margin-bottom: 0.8rem; display: block; }
-  .contact-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 0.3rem;
-  }
-  .contact-card p { font-size: 0.82rem; color: var(--text-soft); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: linear-gradient(135deg, #1e1328, #2e1840, #1e1328);
-    color: rgba(255,255,255,0.65);
-    text-align: center;
-    padding: 2.8rem 5%;
-  }
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--lavender), var(--pink), var(--gold-shine));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.8rem;
-  }
-  footer p { font-size: 0.83rem; line-height: 1.8; letter-spacing: 0.03em; }
-  footer p span { color: var(--gold-shine); }
-
-  /* ── SCROLL PROGRESS ── */
-  #progress-bar {
-    position: fixed; top: 0; left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--lavender-deep), var(--pink-deep), var(--gold));
-    z-index: 200;
-    transition: width 0.1s;
-    width: 0%;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-    .nav-links.open {
-      display: flex; flex-direction: column;
-      position: absolute; top: 60px; left: 0; right: 0;
-      background: rgba(255,250,253,0.97);
-      padding: 1.5rem;
-      gap: 1rem;
-      border-bottom: 1px solid rgba(212,175,106,0.2);
-    }
-    .about-grid { grid-template-columns: 1fr; }
-    .about-visual { order: -1; }
-    .about-circle { width: 240px; height: 240px; font-size: 5rem; }
-    .about-orbit-1 { width: 280px; height: 280px; }
-    .about-orbit-2 { width: 330px; height: 330px; }
-    .event-separator { display: none; }
-    .float-icon { font-size: 1.6rem; }
-  }
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .cgrid{grid-template-columns:repeat(2,1fr);}
+  .wgrid{grid-template-columns:repeat(2,1fr);}
+  .ftop{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .hero-wrap{grid-template-columns:1fr;padding-top:88px;}
+  .hero-right{display:none;}
+  .about-grid,.ctgrid{grid-template-columns:1fr;}
+  .av-wrap{min-height:300px;}
+  .av-main{width:200px;height:255px;}
+  .av-circle{width:280px;height:280px;}
+  .mgrid{grid-template-columns:1fr 1fr;}
+  .mi.wide{grid-column:span 2;}
+  .ftop{grid-template-columns:1fr 1fr;}
+  .section{padding:4rem 5%;}
+  .frow{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .cgrid,.wgrid{grid-template-columns:1fr;}
+  .mgrid{grid-template-columns:1fr;}
+  .mi.wide{grid-column:span 1;}
+  .ftop{grid-template-columns:1fr;}
+  .fbot{flex-direction:column;text-align:center;}
+  .hero-btns{flex-direction:column;align-items:flex-start;}
+}
 </style>
 </head>
 <body>
 
-<div id="progress-bar"></div>
-<canvas id="sparkle-canvas"></canvas>
+<div id="pg"></div>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">✦ Uniglam Emporium</div>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">About</a></li>
-    <li><a href="#specials">Specials</a></li>
-    <li><a href="#event">Event</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()">
-    <span></span><span></span><span></span>
+<header id="hdr">
+  <nav>
+    <a href="#" class="logo">Uni<em>glam</em> Emporium</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#insta">Instagram</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="burger" onclick="toggleMob()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobnav" id="mobnav">
+    <a href="#about" onclick="closeMob()">About</a>
+    <a href="#collection" onclick="closeMob()">Collection</a>
+    <a href="#more" onclick="closeMob()">More</a>
+    <a href="#insta" onclick="closeMob()">Instagram</a>
+    <a href="#why" onclick="closeMob()">Why Us</a>
+    <a href="#contact" onclick="closeMob()">Contact</a>
   </div>
-</nav>
+</header>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg-shapes">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-    <div class="hero-blob hero-blob-3"></div>
+  <div class="h-blobs">
+    <div class="hblob hb1"></div>
+    <div class="hblob hb2"></div>
+    <div class="hblob hb3"></div>
   </div>
-  <div class="hero-floats">
-    <span class="float-icon f1">💎</span>
-    <span class="float-icon f2">✨</span>
-    <span class="float-icon f3">💍</span>
-    <span class="float-icon f4">🌸</span>
-    <span class="float-icon f5">⭐</span>
-    <span class="float-icon f6">🪷</span>
+  <div class="h-floats">
+    <span class="hf">💎</span>
+    <span class="hf">✨</span>
+    <span class="hf">💍</span>
+    <span class="hf">🌸</span>
+    <span class="hf">⭐</span>
+    <span class="hf">🪷</span>
+    <span class="hf">🪬</span>
+    <span class="hf">💫</span>
   </div>
-  <div class="hero-content">
-    <div class="hero-badge">✦ Luxury Accessory Stall ✦</div>
-    <h1 class="hero-title">Welcome to<br>Uniglam<br>Emporium</h1>
-    <p class="hero-tagline">Accessorize Your <span>Dreams</span> ✨</p>
-    <a href="#event" class="btn-primary">Visit Our Stall ✦</a>
+  <div class="hero-wrap">
+    <div class="hero-left rv">
+      <div class="h-badge">✦ Premium Accessory Brand ✦</div>
+      <h1 class="hero-title">
+        <span class="t1">Welcome to</span><br>
+        <span class="t2">Uniglam</span><br>
+        <span class="t3">Emporium</span>
+      </h1>
+      <p class="hero-tag">Accessorize Your <b>Dreams ✨</b></p>
+      <div class="hero-btns">
+        <a href="#collection" class="btn btn-p"><i class="fas fa-gem"></i> Explore Collection</a>
+        <a href="#contact" class="btn btn-o"><i class="fas fa-envelope"></i> Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-right rv d2">
+      <div class="hero-grid">
+        <div class="hcard tall">
+          <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&q=80" alt="Necklace" style="height:340px;">
+          <div class="hcap">Necklaces</div>
+        </div>
+        <div class="hcard">
+          <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=300&q=80" alt="Earrings" style="height:162px;">
+          <div class="hcap">Earrings</div>
+        </div>
+        <div class="hcard">
+          <img src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=300&q=80" alt="Bracelets" style="height:162px;">
+          <div class="hcap">Bracelets</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" class="section">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-text reveal">
-        <p class="section-label">✦ Our Story</p>
-        <h2 class="section-title">Where <em>Style</em> Meets Affordability</h2>
+      <div class="av-wrap rv">
+        <div class="av-circle"></div>
+        <div class="av-main">
+          <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=500&q=80" alt="Uniglam Collection">
+        </div>
+        <div class="av-fl f1">
+          <img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=200&q=80" alt="Accessories">
+        </div>
+        <div class="av-fl f2">
+          <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=200&q=80" alt="Rings">
+        </div>
+      </div>
+      <div class="rv d2">
+        <p class="s-label">✦ Our Story</p>
+        <h2 class="s-heading">Where <em>Elegance</em> Meets Affordability</h2>
         <div class="divider"></div>
-        <p>Welcome to <strong>Uniglam Emporium</strong> — a trendy accessory stall crafted for every fashion lover who believes beauty shouldn't break the bank. We curate the most stylish, on-trend accessories so every girl can shine.</p>
-        <p>From dazzling earrings to charming bracelets and delicate rings, our collection is designed to elevate any look — whether you're dressing up for an event or keeping it casual and chic.</p>
-        <div class="about-tags">
-          <span class="about-tag">💫 Stylish</span>
-          <span class="about-tag">💖 Affordable</span>
-          <span class="about-tag">✨ Trendy</span>
-          <span class="about-tag">🎀 Fun</span>
-          <span class="about-tag">💎 Elegant</span>
+        <p class="subtext">Uniglam Emporium is a stylish accessory brand offering trendy, elegant, and affordable fashion accessories designed to enhance your everyday look. Our collection features beautiful necklaces, earrings, bracelets, and aesthetic accessories perfect for modern fashion lovers.</p>
+        <p class="subtext" style="margin-top:1rem;">We believe every woman deserves to shine — and our carefully curated pieces make that possible without breaking the bank. Find accessories that speak your style, every single day.</p>
+        <div class="at-stats">
+          <div class="stat"><div class="sn">500+</div><div class="sl">Designs</div></div>
+          <div class="stat"><div class="sn">2K+</div><div class="sl">Customers</div></div>
+          <div class="stat"><div class="sn">100%</div><div class="sl">Style ✓</div></div>
         </div>
-      </div>
-      <div class="about-visual reveal">
-        <div class="about-orbit about-orbit-1"><div class="orbit-dot"></div></div>
-        <div class="about-orbit about-orbit-2"><div class="orbit-dot"></div></div>
-        <div class="about-circle">💍</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SPECIALS -->
-<section id="specials">
+<!-- FEATURED COLLECTION -->
+<section id="collection" class="section">
   <div class="section-inner">
-    <div style="text-align:center" class="reveal">
-      <p class="section-label">✦ Why Us</p>
-      <h2 class="section-title">What's <em>Special</em> at Our Stall</h2>
-      <div class="divider" style="margin:1.2rem auto 2.5rem;"></div>
+    <div class="ch rv">
+      <p class="s-label">✦ Our Products</p>
+      <h2 class="s-heading">Featured <em>Collection</em></h2>
+      <div class="divider cx"></div>
+      <p class="subtext" style="max-width:500px;margin:0 auto;">Handpicked pieces crafted for the modern fashion lover — every detail, perfectly curated.</p>
     </div>
-    <div class="specials-grid">
-      <div class="special-card reveal">
-        <span class="special-icon">💎</span>
-        <h3>Trendy & Stylish Accessories</h3>
-        <p>Handpicked pieces that follow the latest fashion trends, so you always look runway-ready.</p>
+    <div class="cgrid">
+      <div class="pc rv d1">
+        <div class="pi">
+          <span class="pbadge bnew">New</span>
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80" alt="Pink Crystal Necklace">
+          <div class="pov"><button class="pq" onclick="toast('Added to wishlist! 💖')">♡ Wishlist</button></div>
+        </div>
+        <div class="pinfo">
+          <h3>Pink Crystal Necklace</h3>
+          <p>Dazzling pink crystals with matching earrings</p>
+          <div class="pfoot"><span class="pprice">✦ Affordable</span><button class="pheart" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button></div>
+        </div>
       </div>
-      <div class="special-card reveal">
-        <span class="special-icon">🏷️</span>
+      <div class="pc rv d2">
+        <div class="pi">
+          <span class="pbadge bhot">🔥 Hot</span>
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80" alt="Golden Crescent">
+          <div class="pov"><button class="pq" onclick="toast('Added to wishlist! 💖')">♡ Wishlist</button></div>
+        </div>
+        <div class="pinfo">
+          <h3>Golden Crescent Set</h3>
+          <p>Celestial crescent necklace with stud earrings</p>
+          <div class="pfoot"><span class="pprice">✦ Affordable</span><button class="pheart" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button></div>
+        </div>
+      </div>
+      <div class="pc rv d3">
+        <div class="pi">
+          <span class="pbadge bfav">Fan Fav</span>
+          <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=400&q=80" alt="Flower Clips">
+          <div class="pov"><button class="pq" onclick="toast('Added to wishlist! 💖')">♡ Wishlist</button></div>
+        </div>
+        <div class="pinfo">
+          <h3>Colorful Flower Clips</h3>
+          <p>Vibrant floral hair clips for every look</p>
+          <div class="pfoot"><span class="pprice">✦ Affordable</span><button class="pheart" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button></div>
+        </div>
+      </div>
+      <div class="pc rv d4">
+        <div class="pi">
+          <span class="pbadge bnew">New</span>
+          <img src="https://images.unsplash.com/photo-1586878341523-7e1dd8e7d5d0?w=400&q=80" alt="Earrings">
+          <div class="pov"><button class="pq" onclick="toast('Added to wishlist! 💖')">♡ Wishlist</button></div>
+        </div>
+        <div class="pinfo">
+          <h3>Statement Earrings</h3>
+          <p>Bold yet elegant drops for every occasion</p>
+          <div class="pfoot"><span class="pprice">✦ Affordable</span><button class="pheart" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;" class="rv">
+      <a href="#more" class="btn btn-o">View More <i class="fas fa-arrow-down"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- MORE COLLECTION -->
+<section id="more" class="section">
+  <div class="section-inner">
+    <div class="mh rv">
+      <p class="s-label">✦ More Styles</p>
+      <h2 class="s-heading">Explore <em>More</em></h2>
+      <div class="divider cx"></div>
+      <p class="subtext" style="max-width:480px;margin:0 auto;">Our collection spans every style, every mood, every you.</p>
+    </div>
+    <div class="mgrid">
+      <div class="mi rv d1">
+        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80" alt="Earrings">
+        <div class="mcap"><h4>Statement Earrings</h4><span>Trendy Drops</span></div>
+      </div>
+      <div class="mi wide rv d2">
+        <img src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=800&q=80" alt="Necklace">
+        <div class="mcap"><h4>Layered Necklaces</h4><span>Gold Collection</span></div>
+      </div>
+      <div class="mi wide rv d3">
+        <img src="https://images.unsplash.com/photo-1607703703674-df96af81dffa?w=800&q=80" alt="Bracelets">
+        <div class="mcap"><h4>Bracelet Stacks</h4><span>Mix & Match</span></div>
+      </div>
+      <div class="mi rv d4">
+        <img src="https://images.unsplash.com/photo-1641893843886-65cf82cf4d44?w=400&q=80" alt="Hair Accessories">
+        <div class="mcap"><h4>Hair Accessories</h4><span>Aesthetic Clips</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="insta" class="section">
+  <div class="section-inner">
+    <div class="ih rv">
+      <p class="s-label">✦ Stay Connected</p>
+      <h2 class="s-heading">Follow Our <em>Style</em> on Instagram</h2>
+      <div class="divider cx"></div>
+      <p class="subtext" style="max-width:480px;margin:0 auto 1.5rem;">See our latest arrivals, styling inspo & new collections on Instagram.</p>
+      <a href="https://www.instagram.com/uniglamworld_official_" target="_blank" class="insta-badge">
+        <i class="fab fa-instagram"></i> @uniglamworld_official_
+      </a>
+    </div>
+    <div class="ibox rv d1">
+      <div class="iavatar"><i class="fab fa-instagram"></i></div>
+      <h3>@uniglamworld_official_</h3>
+      <p class="isub">Uniglam Emporium · Fashion Accessories · Your daily style destination ✨</p>
+      <div class="imock">
+        <div class="imtile">💍</div>
+        <div class="imtile">✨</div>
+        <div class="imtile">🌸</div>
+        <div class="imtile">💎</div>
+        <div class="imtile">🪷</div>
+        <div class="imtile">🎀</div>
+      </div>
+      <p class="itext">Follow us on Instagram for daily fashion inspo, new arrivals, exclusive deals, and behind-the-scenes of our gorgeous accessory world! 🌟</p>
+      <a href="https://www.instagram.com/uniglamworld_official_" target="_blank" class="ibtn">
+        <i class="fab fa-instagram"></i> Follow on Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why" class="section">
+  <div class="section-inner">
+    <div class="wh rv">
+      <p class="s-label">✦ Our Promise</p>
+      <h2 class="s-heading">Why <em>Choose</em> Us</h2>
+      <div class="divider cx"></div>
+    </div>
+    <div class="wgrid">
+      <div class="wcard rv d1">
+        <div class="wicon wi1">💎</div>
+        <h3>Trendy & Stylish</h3>
+        <p>We follow the latest fashion trends so your accessories are always on point and runway-ready.</p>
+      </div>
+      <div class="wcard rv d2">
+        <div class="wicon wi2">🏷️</div>
         <h3>Affordable Prices</h3>
-        <p>Luxury-looking pieces at prices that won't make your wallet cry. Style for everyone!</p>
+        <p>Premium-looking accessories at prices everyone can love. Style without the splurge.</p>
       </div>
-      <div class="special-card reveal">
-        <span class="special-icon">🎁</span>
-        <h3>Exciting Offers & Surprises</h3>
-        <p>Special deals, combo packs, and surprise discounts waiting for you at every turn.</p>
+      <div class="wcard rv d3">
+        <div class="wicon wi3">🌸</div>
+        <h3>Unique Designs</h3>
+        <p>Every piece is carefully selected to offer something fresh, distinctive, and memorable.</p>
       </div>
-      <div class="special-card reveal">
-        <span class="special-icon">🎮</span>
-        <h3>Fun Game Challenges</h3>
-        <p>Spin the wheel, play mini games, and win amazing prizes at our interactive stall.</p>
-      </div>
-      <div class="special-card reveal">
-        <span class="special-icon">🎀</span>
-        <h3>Special Freebies to Win</h3>
-        <p>Walk away with gorgeous freebies just for visiting and participating in our stall activities!</p>
+      <div class="wcard rv d4">
+        <div class="wicon wi4">⭐</div>
+        <h3>High Quality Fashion</h3>
+        <p>Crafted with care using quality materials that look beautiful and last longer.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- EVENT -->
-<section id="event">
-  <div class="section-inner">
-    <div style="text-align:center" class="reveal">
-      <p class="section-label">✦ Mark Your Calendar</p>
-      <h2 class="section-title">Event <em>Details</em></h2>
-      <div class="divider" style="margin:1.2rem auto 2.5rem;"></div>
-    </div>
-    <div class="event-banner reveal">
-      <div class="event-item">
-        <span class="event-item-icon">📍</span>
-        <div class="event-item-label">Location</div>
-        <div class="event-item-value">Sanskriti School of Engineering<br><small style="font-size:0.9rem;opacity:0.85;">Puttaparthi</small></div>
-      </div>
-      <div class="event-separator"></div>
-      <div class="event-item">
-        <span class="event-item-icon">📅</span>
-        <div class="event-item-label">Dates</div>
-        <div class="event-item-value">16th & 17th March</div>
-      </div>
-      <div class="event-separator"></div>
-      <div class="event-item">
-        <span class="event-item-icon">⏰</span>
-        <div class="event-item-label">Timings</div>
-        <div class="event-item-value">All Day Long</div>
-      </div>
-      <div class="event-separator"></div>
-      <div class="event-item">
-        <span class="event-item-icon">✨</span>
-        <div class="event-item-label">Entry</div>
-        <div class="event-item-value">Free Entry<br><small style="font-size:0.9rem;opacity:0.85;">Everyone Welcome</small></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTS -->
-<section id="products">
-  <div class="section-inner">
-    <div style="text-align:center" class="reveal">
-      <p class="section-label">✦ Our Collection</p>
-      <h2 class="section-title">Product <em>Showcase</em></h2>
-      <div class="divider" style="margin:1.2rem auto 2.5rem;"></div>
-    </div>
-    <div class="products-grid">
-      <div class="product-card reveal">
-        <div class="product-image pi-1">💎</div>
-        <div class="product-info">
-          <h3>Earrings</h3>
-          <p>From dainty studs to statement drops — find your perfect pair to frame your face beautifully.</p>
-          <span class="product-badge">✦ Trending</span>
-        </div>
-      </div>
-      <div class="product-card reveal">
-        <div class="product-image pi-2">🪬</div>
-        <div class="product-info">
-          <h3>Bracelets</h3>
-          <p>Stack them, layer them, love them. Chic bracelets for every wrist and every mood.</p>
-          <span class="product-badge">✦ New Arrivals</span>
-        </div>
-      </div>
-      <div class="product-card reveal">
-        <div class="product-image pi-3">💍</div>
-        <div class="product-info">
-          <h3>Rings</h3>
-          <p>Delicate bands, bold statement rings, and adjustable beauties for fingers that deserve the spotlight.</p>
-          <span class="product-badge">✦ Best Sellers</span>
-        </div>
-      </div>
-      <div class="product-card reveal">
-        <div class="product-image pi-4">👛</div>
-        <div class="product-info">
-          <h3>Fashion Accessories</h3>
-          <p>Hair clips, pins, anklets, and more — cute little extras that complete any look perfectly.</p>
-          <span class="product-badge">✦ Must Have</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VISIT CTA -->
-<section id="visit">
-  <div class="visit-inner">
-    <p class="section-label">✦ Don't Miss Out</p>
-    <h2 class="section-title">Come, Explore & <em>Shine</em></h2>
-    <div class="divider"></div>
-    <p>Don't miss the chance! Come explore, shop and <span>enjoy the fun</span>. Our stall is packed with gorgeous finds, exciting surprises, and memories waiting to be made. ✨</p>
-    <a href="#contact" class="btn-primary" style="background: linear-gradient(135deg, var(--gold), var(--pink-deep));">Get in Touch ✦</a>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="section">
   <div class="section-inner">
-    <div style="text-align:center" class="reveal">
-      <p class="section-label">✦ Stay Connected</p>
-      <h2 class="section-title">Find <em>Us</em> Here</h2>
-      <div class="divider" style="margin:1.2rem auto 2.5rem;"></div>
-    </div>
-    <div class="contact-grid">
-      <a href="https://instagram.com" target="_blank" class="contact-card cc-insta reveal">
-        <span class="contact-icon">📸</span>
-        <h3>Instagram</h3>
-        <p>Follow us for the latest drops, behind-the-scenes & style inspiration</p>
-      </a>
-      <a href="https://wa.me/" target="_blank" class="contact-card cc-whatsapp reveal">
-        <span class="contact-icon">💬</span>
-        <h3>WhatsApp</h3>
-        <p>Chat with us for queries, pre-orders or just to say hello!</p>
-      </a>
-      <a href="mailto:uniglam@email.com" class="contact-card cc-email reveal">
-        <span class="contact-icon">✉️</span>
-        <h3>Email Us</h3>
-        <p>Drop us a message and we'll get back to you with sparkle and speed</p>
-      </a>
+    <div class="ctgrid">
+      <div class="rv">
+        <p class="s-label">✦ Get in Touch</p>
+        <h2 class="s-heading">Let's <em>Connect</em></h2>
+        <div class="divider"></div>
+        <p class="subtext">We'd love to hear from you! Reach out on any platform or drop us a message below.</p>
+        <div class="ct-channels">
+          <a href="https://www.instagram.com/uniglamworld_official_" target="_blank" class="cch">
+            <div class="cch-icon ci-ig"><i class="fab fa-instagram"></i></div>
+            <div><strong>Instagram</strong><span>@uniglamworld_official_</span></div>
+            <i class="fas fa-arrow-right" style="margin-left:auto;color:var(--text-soft);font-size:.75rem;"></i>
+          </a>
+          <a href="https://wa.me/919999999999" target="_blank" class="cch">
+            <div class="cch-icon ci-wa"><i class="fab fa-whatsapp"></i></div>
+            <div><strong>WhatsApp</strong><span>Chat with us directly</span></div>
+            <i class="fas fa-arrow-right" style="margin-left:auto;color:var(--text-soft);font-size:.75rem;"></i>
+          </a>
+          <a href="mailto:uniglamworld2@gmail.com" class="cch">
+            <div class="cch-icon ci-em"><i class="fas fa-envelope"></i></div>
+            <div><strong>Email</strong><span>uniglamworld2@gmail.com</span></div>
+            <i class="fas fa-arrow-right" style="margin-left:auto;color:var(--text-soft);font-size:.75rem;"></i>
+          </a>
+        </div>
+      </div>
+      <div class="cform rv d2">
+        <h3>Send a Message ✨</h3>
+        <p class="fsub">We reply within 24 hours — promise! 💖</p>
+        <div class="frow">
+          <div class="fg"><label>Your Name</label><input type="text" id="fn" placeholder="Jane Doe"></div>
+          <div class="fg"><label>Email</label><input type="email" id="fe" placeholder="you@email.com"></div>
+        </div>
+        <div class="fg"><label>Subject</label><input type="text" id="fs" placeholder="Inquiry about accessories..."></div>
+        <div class="fg"><label>Message</label><textarea id="fm" placeholder="Tell us what you're looking for..."></textarea></div>
+        <button class="fsend" onclick="handleForm()"><i class="fas fa-paper-plane"></i> &nbsp;Send Message</button>
+        <div id="fsuccess">
+          <i class="fas fa-check-circle" style="font-size:2rem;color:var(--lav-deep);display:block;margin-bottom:.4rem;"></i>
+          Message sent! We'll get back to you soon 💖
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">✦ Uniglam Emporium ✦</div>
-  <p>Visit our stall – <span>UNIGLAM EMPORIUM</span>. Where Style Meets Affordability!</p>
-  <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.45;">Made with 💖 for fashionistas everywhere</p>
+  <div class="footer-inner">
+    <div class="ftop">
+      <div class="fbrand">
+        <a href="#" class="logo">Uni<em>glam</em> Emporium</a>
+        <p>Where Style Meets Affordability. Your everyday destination for trendy, elegant, and affordable accessories.</p>
+        <div class="fsoc-row">
+          <a href="https://www.instagram.com/uniglamworld_official_" target="_blank" class="fsoc fi"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/919999999999" target="_blank" class="fsoc fw"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:uniglamworld2@gmail.com" class="fsoc fe"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#collection">Necklaces</a></li>
+          <li><a href="#collection">Earrings</a></li>
+          <li><a href="#collection">Bracelets</a></li>
+          <li><a href="#collection">Hair Clips</a></li>
+          <li><a href="#collection">Rings</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#why">Why Choose Us</a></li>
+          <li><a href="#insta">Instagram</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/uniglamworld_official_" target="_blank">@uniglamworld_official_</a></li>
+          <li><a href="mailto:uniglamworld2@gmail.com">uniglamworld2@gmail.com</a></li>
+          <li><a href="https://wa.me/919999999999">WhatsApp Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>© 2025 <span>UNIGLAM EMPORIUM</span>. All Rights Reserved.</p>
+      <p><span>✦</span> Where Style Meets Affordability <span>✦</span></p>
+    </div>
+  </div>
 </footer>
 
+<div class="toast" id="toast-el"></div>
+
 <script>
-  // ── SPARKLE CANVAS ──
-  const canvas = document.getElementById('sparkle-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [];
+// Progress bar + header scroll
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
+  document.getElementById('pg').style.width=pct+'%';
+  document.getElementById('hdr').classList.toggle('scrolled',window.scrollY>40);
+});
 
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  class Sparkle {
-    constructor() { this.reset(); }
-    reset() {
-      this.x = Math.random() * W;
-      this.y = Math.random() * H;
-      this.size = Math.random() * 2.5 + 0.5;
-      this.alpha = Math.random() * 0.5 + 0.1;
-      this.speed = Math.random() * 0.5 + 0.1;
-      this.twinkle = Math.random() * 0.02 + 0.005;
-      this.dir = Math.random() > 0.5 ? 1 : -1;
-      const colors = ['#d5bcf0','#f9c8df','#f5e6a8','#c8e6f9','#fce4ec'];
-      this.color = colors[Math.floor(Math.random() * colors.length)];
+// Reveal
+const rvEls=document.querySelectorAll('.rv');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('up'),i*65);
+      obs.unobserve(e.target);
     }
-    update() {
-      this.y -= this.speed * 0.3;
-      this.alpha += this.twinkle * this.dir;
-      if (this.alpha > 0.6 || this.alpha < 0.05) this.dir *= -1;
-      if (this.y < -10) this.reset(), this.y = H + 10;
-    }
-    draw() {
-      ctx.save();
-      ctx.globalAlpha = this.alpha;
-      ctx.fillStyle = this.color;
-      ctx.shadowBlur = 6;
-      ctx.shadowColor = this.color;
-      ctx.beginPath();
-      const s = this.size;
-      ctx.moveTo(this.x, this.y - s * 2);
-      ctx.lineTo(this.x + s * 0.6, this.y - s * 0.6);
-      ctx.lineTo(this.x + s * 2, this.y);
-      ctx.lineTo(this.x + s * 0.6, this.y + s * 0.6);
-      ctx.lineTo(this.x, this.y + s * 2);
-      ctx.lineTo(this.x - s * 0.6, this.y + s * 0.6);
-      ctx.lineTo(this.x - s * 2, this.y);
-      ctx.lineTo(this.x - s * 0.6, this.y - s * 0.6);
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-    }
-  }
-
-  for (let i = 0; i < 80; i++) particles.push(new Sparkle());
-
-  function animateSparkles() {
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => { p.update(); p.draw(); });
-    requestAnimationFrame(animateSparkles);
-  }
-  animateSparkles();
-
-  // ── SCROLL PROGRESS ──
-  window.addEventListener('scroll', () => {
-    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-    document.getElementById('progress-bar').style.width = pct + '%';
   });
+},{threshold:.1});
+rvEls.forEach(el=>obs.observe(el));
 
-  // ── REVEAL ON SCROLL ──
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => observer.observe(el));
+// Mobile nav
+function toggleMob(){document.getElementById('mobnav').classList.toggle('open');}
+function closeMob(){document.getElementById('mobnav').classList.remove('open');}
 
-  // ── MOBILE NAV ──
-  function toggleNav() {
-    document.getElementById('navLinks').classList.toggle('open');
-  }
+// Toast
+function toast(msg){
+  const t=document.getElementById('toast-el');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// Heart toggle
+function toggleHeart(btn){
+  btn.classList.toggle('active');
+  toast(btn.classList.contains('active')?'Saved to favourites! 💕':'Removed from favourites');
+}
+
+// Form
+function handleForm(){
+  const n=document.getElementById('fn').value.trim();
+  const e=document.getElementById('fe').value.trim();
+  const m=document.getElementById('fm').value.trim();
+  if(!n||!e||!m){toast('Please fill in all required fields 💕');return;}
+  document.getElementById('fsuccess').style.display='block';
+  ['fn','fe','fs','fm'].forEach(id=>document.getElementById(id).value='');
+  setTimeout(()=>document.getElementById('fsuccess').style.display='none',4000);
+  toast('Message sent! We\'ll reply soon 💖');
+}
 </script>
 </body>
 </html>
